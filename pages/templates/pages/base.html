@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Font Awesome -->  
+        <link rel="stylesheet" href="{% static "pages/css/all.css" %}">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="{% static "pages/css/bootstrap.css" %}">
+        <!-- Custom -->
+        <link rel="stylesheet" href="{% static "pages/css/style.css" %}">
+        <!-- Lightbox-->
+        <link rel="stylesheet" href="{% static "pages/css/lightbox.min.css" %}">
+        
+        <title>{% block title %} Robert Estate {% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+<!--Top Bar --> 
+{% include "pages/partials/_topbar.html" %}
+<!--Nav Bar -->
+{% include "pages/partials/_navbar.html" %}
+
+{% if messages %}
+{% for message in messages %}
+{% if request.user.is_authenticated %}
+    <div class="alert alert-success" role="alert">{{ message }}</div>
+{% else %}
+    <div class="alert alert-warning" role="alert">{{ message }}</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% block content %} {% endblock %}
+<!--Footer-->
+{% include "pages/partials/_footer.html" %}
+
+<script src="{% static "pages/js/jquery-3.3.1.min.js" %}"></script>
+<script src="{% static "pages/js/bootstrap.bundle.min.js" %}"></script>
+<script src="{% static "pages/js/main.js" %}"></script>
+<script src="{% static "pages/js/lightbox.min.js" %}"></script>
+</body>
+</html>
