@@ -17,7 +17,7 @@ SECRET_KEY = 'django-insecure-4at1@mr@t5+0u=%w#i$s(xx@e@)8u75+n%(8*=uk=9-670=l@m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ '*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -125,16 +125,13 @@ STATICFILES_DIR = BASE_DIR / 'static'
 
 MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #Messages
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR : 'danger',
     
 }
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 
 django_heroku.settings(locals())
 
